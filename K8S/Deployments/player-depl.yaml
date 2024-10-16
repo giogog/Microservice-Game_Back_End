@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: player-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: playerservice
+  template:
+    metadata:
+      labels:
+        app: playerservice
+    spec:
+      containers:
+        - name: playerservice
+          image: ggogoladzee11/playerservice:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: player-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: playerservice  # Ensure this matches your pod labels
+  ports:
+  - name: playerservice
+    protocol: TCP
+    port: 8080          
+    targetPort: 8080
+  - name: playerservicegrpc
+    protocol: TCP
+    port: 888
+    targetPort: 888

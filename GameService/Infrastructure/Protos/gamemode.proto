@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcConfiguration.Gamemode";
+
+service GrpcGamemode
+{
+    rpc GetAllGamemodes (GetAllGamemodesRequest) returns (AllGamemodesResponse);
+    rpc GetGamemode (GetGamemodeRequest) returns (GamemodeResponse);
+}
+
+message GetAllGamemodesRequest { }
+
+message GetGamemodeRequest 
+{
+    string name = 1;
+}
+
+
+message GrpcGamemodeModel
+{
+    string name = 1;
+    int32 maxplayer = 2;
+    int32 maxscore = 3;
+}
+
+message AllGamemodesResponse
+{
+    repeated GrpcGamemodeModel Gamemodes = 1;
+}
+
+message GamemodeResponse
+{
+    GrpcGamemodeModel Gamemode = 1;
+}

@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcConfiguration.Player";
+
+service GrpcPlayer
+{
+    rpc UpdatePlayers (UpdatePlayersRequest) returns (UpdatePlayersResponse);
+}
+
+message UpdatePlayersRequest 
+{
+    repeated UpdatePlayersModel Players = 1;
+}
+
+message UpdatePlayersModel 
+{
+    string playerId = 1;
+    int32 money = 2;
+    int32 experiance = 3;
+    int32 playerlvl = 4;
+}
+
+
+message UpdatePlayersResponse
+{
+   bool success = 1;
+   string message = 2;
+}

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gamesession-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gamesessionservice
+  template:
+    metadata:
+      labels:
+        app: gamesessionservice
+    spec:
+      containers:
+        - name: gamesessionservice
+          image: ggogoladzee11/gamesessionservice:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gamesession-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: gamesessionservice  # Ensure this matches your pod labels
+  ports:
+  - name: gamesessionservice
+    protocol: TCP
+    port: 8080          
+    targetPort: 8080  

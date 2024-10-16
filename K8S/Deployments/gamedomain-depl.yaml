@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gamedomain-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gamedomainservice
+  template:
+    metadata:
+      labels:
+        app: gamedomainservice
+    spec:
+      containers:
+        - name: gamedomainservice
+          image: ggogoladzee11/gamedomainservice:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gamedomain-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: gamedomainservice  # Ensure this matches your pod labels
+  ports:
+  - name: gamedomainservice
+    protocol: TCP
+    port: 8080          
+    targetPort: 8080  
+  - name: gamedomaingrpc
+    protocol: TCP
+    port: 666
+    targetPort: 666

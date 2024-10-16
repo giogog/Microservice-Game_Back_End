@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: matchmaking-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: matchmakingservice
+  template:
+    metadata:
+      labels:
+        app: matchmakingservice
+    spec:
+      containers:
+        - name: matchmakingservice
+          image: ggogoladzee11/matchmakingservice:latest

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcConfiguration.Region";
+
+service GrpcRegions
+{
+    rpc GetAllRegions (GetAllRegionslRequest) returns (RegionsResponse);
+}
+
+message GetAllRegionslRequest { }
+
+message GrpcRegionModel
+{
+    string name = 1;
+}
+
+message RegionsResponse
+{
+    repeated GrpcRegionModel regions = 1;
+}
