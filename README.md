@@ -1,7 +1,7 @@
 My Main Project:
 Game Back-End Microservice Architecture
 This project is a microservice-based architecture for a game back-end, built using ASP.NET Core with Web API, MediatR, SignalR, Entity Framework, MSSQL, MongoDB, Docker, and Kubernetes. It utilizes gRPC for inter-service communication and RabbitMQ for message queuing.
-Each service follows a clean architectur design, ensuring scalability, maintainability, and efficient inter-service interaction.
+Each service follows a clean architecture design, ensuring scalability, maintainability, and efficient inter-service interaction.
 
 Technologies Used
 ASP.NET Core: For building web APIs
